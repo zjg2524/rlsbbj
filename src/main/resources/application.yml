@@ -1,0 +1,44 @@
+server:
+  port: 8088
+
+spring:
+  resources:
+    add-mappings: false
+  application:
+    name: commons
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+
+    hikari:
+      maximum-pool-size: 100
+  profiles:
+    active: dev
+#    active: prod
+  mvc:
+    throw-exception-if-no-handler-found: true
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  # typeAliasesPackage: com.ch999.coach.api.entity
+  # typeEnumsPackage: com.ch999.coach.api.entity.enums
+  global-config:
+    db-config:
+      id-type: id_worker
+      field-strategy: not_empty
+      table-underline: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      db-type: oracle
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+startTime: "2019-10-05 00:00:00"
+query:
+  delay: 5000 # 毫秒
+
+
+

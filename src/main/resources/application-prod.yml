@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: rlsbbj
+  datasource:
+    url: jdbc:oracle:thin:@86.81.10.88:5521:orcl
+    hikari:
+      username: rlsbbj
+      password: rlsbbj
+logging:
+  config: classpath:logback-prod.xml

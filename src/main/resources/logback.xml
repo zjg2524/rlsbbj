@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="com.baomidou" level="DEBUG" />
+    <logger name="org.mybatis" level="DEBUG"/>
+    <logger name="com.kunming" level="DEBUG" />
+    <logger name="org.springframework.data.redis" level="DEBUG"/>
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

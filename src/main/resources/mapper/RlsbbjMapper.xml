@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tools.extract2kafka.rlsbbj.mapper.RlsbbjMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.tools.extract2kafka.rlsbbj.entity.Rlsbbj">
+        <result column="BJBH" property="bjbh" />
+        <result column="XRSJ" property="xrsj" />
+        <result column="BJSJ" property="bjsj" />
+        <result column="XZQH" property="xzqh" />
+        <result column="YHMC" property="yhmc" />
+        <result column="YHDZ" property="yhdz" />
+        <result column="AFDD" property="afdd" />
+        <result column="BJNR" property="bjnr" />
+        <result column="GXDW" property="gxdw" />
+        <result column="SSFJ" property="ssfj" />
+        <result column="YJCZLX" property="yjczlx" />
+        <result column="RYLX" property="rylx" />
+        <result column="SFZH" property="sfzh" />
+        <result column="XYRXM" property="xyrxm" />
+        <result column="XYRXB" property="xyrxb" />
+        <result column="PIC1" property="pic1" />
+        <result column="PIC2" property="pic2" />
+        <result column="PIC3" property="pic3" />
+        <result column="PIC4" property="pic4" />
+        <result column="PIC5" property="pic5" />
+        <result column="PIC6" property="pic6" />
+        <result column="PIC7" property="pic7" />
+        <result column="PIC8" property="pic8" />
+        <result column="PIC9" property="pic9" />
+        <result column="PIC10" property="pic10" />
+        <result column="VID1" property="vid1" />
+        <result column="VID2" property="vid2" />
+        <result column="VID3" property="vid3" />
+        <result column="VID4" property="vid4" />
+        <result column="VID5" property="vid5" />
+        <result column="VID6" property="vid6" />
+        <result column="VID7" property="vid7" />
+        <result column="VID8" property="vid8" />
+        <result column="VID9" property="vid9" />
+        <result column="VID10" property="vid10" />
+        <result column="XZB" property="xzb" />
+        <result column="YZB" property="yzb" />
+        <result column="SBBH" property="sbbh" />
+        <result column="SBLX" property="sblx" />
+        <result column="YDBZ" property="ydbz" />
+        <result column="DQSJ" property="dqsj" />
+    </resultMap>
+
+    <select id="getTodayRlsbbjCount"  resultType="int">
+        select
+          count(distinct SFZH)
+        from rlsbbj where BJSJ >= to_date(to_char(sysdate,'yyyy-MM-dd'),'yyyy-mm-dd hh24:mi:ss');
+    </select>
+
+<!--    <select id="" parameterMap="map" resultType="com.tools.extract2kafka.rlsbbj.entity.Rlsbbj">-->
+<!--        select * from-->
+<!--        (-->
+<!--        select ROWNUM as id,t1.* from (-->
+<!--        select *  from (select distinct * from (select  XRSJ,BJSJ,XZQH,YHMC,YHDZ,AFDD,BJNR,GXDW,SSFJ,YJCZLX,RYLX,SFZH,XYRXM,XYRXB,PIC1,PIC2,PIC3,XZB,YZB,SBBH,SBLX from RLSBBJ))-->
+<!--        where  to_char(BJSJ,'yyyy-mm-dd')=to_char(sysdate,'yyyy-MM-dd')-->
+<!--        and (SFZH,BJSJ) in (-->
+<!--        select SFZH,max(BJSJ) from RLSBBJ-->
+<!--        where  to_char(BJSJ,'yyyy-mm-dd')=to_char(sysdate,'yyyy-MM-dd')-->
+<!--        group by SFZH)-->
+<!--        order by BJSJ desc) t1-->
+<!--        )-->
+<!--        where id >${(pageNum-1)*pageSize} and id <= ${pageSize*pageNum}-->
+<!--    </select>-->
+</mapper>
